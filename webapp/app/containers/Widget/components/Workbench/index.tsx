@@ -492,6 +492,14 @@ export class Workbench extends React.Component<IWorkbenchProps, IWorkbenchStates
     })
   }
 
+  private toView = () => {
+    const { params, currentWidget } = this.props
+    const { pid } = params
+    const { viewId } = currentWidget
+    this.props.router.push(`/project/${pid}/view/${viewId}`)
+    window.location.reload(true)
+  }
+
   public render () {
     const {
       views,
@@ -543,6 +551,7 @@ export class Workbench extends React.Component<IWorkbenchProps, IWorkbenchStates
           onDescriptionChange={this.changeDesc}
           onSave={this.saveWidget}
           onCancel={this.cancel}
+          onEditView={this.toView}
           onSetting={this.openSettingForm}
           loading={loading}
         />

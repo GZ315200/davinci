@@ -41,6 +41,7 @@ interface IEditorHeaderProps {
   onSave?: () => void
   onCancel: () => void
   onSetting?: () => void
+  onEditView?:() => void
   onLoadDownloadList?: () => void
   onDownloadFile?: (id) => void
 }
@@ -58,6 +59,7 @@ export function EditorHeader (props: IEditorHeaderProps) {
     onSave,
     onCancel,
     onSetting,
+    onEditView,
     onLoadDownloadList,
     onDownloadFile
   } = props
@@ -107,6 +109,7 @@ export function EditorHeader (props: IEditorHeaderProps) {
           )
           : (
             <div className={`${currentType === 'dashboard' ? utilStyles.hide : styles.actions}`}>
+               <Button onClick={onEditView}>视图</Button>
               <Button onClick={onSetting}>设置</Button>
               <Button
                 type="primary"
